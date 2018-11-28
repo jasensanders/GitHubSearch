@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:id="@+id/inputContainer"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:id="@+id/query"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:focusable="true"
+                android:hint="search term"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="@integer/upc_input_text_size"
+                android:maxLines="@integer/input_max_lines"
+                android:paddingEnd="@dimen/input_editText_padding"
+                android:saveEnabled="true" />
+
+            <Button
+                android:id="@+id/submit"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:textSize="18sp"
+                android:onClick="queryGitHub"/>
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/content_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:scrollbars="none"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

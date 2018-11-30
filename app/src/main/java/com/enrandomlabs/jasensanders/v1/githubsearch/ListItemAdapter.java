@@ -1,6 +1,7 @@
 package com.enrandomlabs.jasensanders.v1.githubsearch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -43,9 +44,15 @@ public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.ViewHo
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             String[] current = mData.get(adapterPosition);
-            String repoUrl = current[1];
+            String repoUrl = current[0];
 
-            // TODO: Redirect to GitHub Source HTML Page.
+            // Redirect to GitHub Source HTML Page.
+            Intent result = new Intent(Intent.ACTION_VIEW, Uri.parse(repoUrl));
+            result.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            if(result.resolveActivity(mContext.getPackageManager()) != null){
+
+                mContext.startActivity(result);
+            }
 
 
         }

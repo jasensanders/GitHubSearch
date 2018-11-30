@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // ToDO
+        // TODO: create data model separate from Activity.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         queryText = findViewById(R.id.query);
@@ -72,10 +72,13 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<String> received = intent.getStringArrayListExtra(SERVICE_EXTRA_GITHUB_DATA);
                 cache = received;
 
+
                 ArrayList<String[]> expand = expandString(received);
 
                 //Push Data to List.
-                listItemAdapter.swapData(expand);
+                if(listItemAdapter != null) {
+                    listItemAdapter.swapData(expand);
+                }
 
             }
 
